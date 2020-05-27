@@ -1,0 +1,126 @@
+<DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS Transitions</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="CSS transitions" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <script>
+      function appendTopic(titleText, descriptionText) {
+        const topic = document.createElement('div');
+        topic.classList.add('topic');
+
+        const header = document.createElement('header');
+        topic.append(header);
+
+        const title = document.createElement('div');
+        title.classList.add('title');
+        title.textContent = titleText;
+        header.append(title);
+
+        const button = document.createElement('button');
+        button.classList.add('toggle');
+        button.innerHTML = '&#x25B6;';
+        button.addEventListener('click', handleClick);
+        header.append(button);
+
+        const section = document.createElement('section');
+        section.textContent = descriptionText;
+        topic.append(section);
+
+        document.body.append(topic);
+      }
+
+      function handleClick(event) {
+        const {target} = event;
+        const topic = target.parentElement.parentElement;
+        topic.classList.toggle('show');
+      }
+
+      let description = `
+        CSS transitions provide a way to control
+        animation speed when changing CSS properties.
+        Instead of having property changes take effect immediately,
+        you can cause the changes in a property
+        to take place over a period of time.
+      `;
+      appendTopic('CSS Transitions', description);
+
+      description = `
+        CSS Flexible Box Layout is a module of CSS that defines a CSS box model
+        optimized for user interface design, and the layout of items in
+        one dimension.  In the flex layout model, the children of a
+        flex container can be laid out in any direction, and can “flex” their
+        sizes, either growing to fill unused space or shrinking to avoid
+        overflowing the parent.  Both horizontal and vertical alignment of
+        the children can be easily manipulated.
+      `;
+      appendTopic('CSS Flexible Box Layout', description);
+    </script>
+
+    <style>
+      body {
+        background-color: linen;
+        font-family: sans-serif;
+        padding: 1rem;
+      }
+
+      .topic {
+        box-shadow: 5px 5px 5px #666;
+        display: inline-block;
+        background-color: cornflowerblue;
+        border-radius: 1rem;
+        color: white;
+        margin: 0 1rem 1rem 0;
+        padding: 1rem;
+        vertical-align: top;
+        width: 350px;
+      }
+
+      .topic > header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .topic > header > button {
+        background-color: transparent;
+        border: none;
+        color: inherit;
+        font-size: 2rem;
+        outline: none;
+        transition-duration: 0.5s;
+        transition-property: transform;
+        transform: rotate(0deg);
+      }
+
+      .topic.show > header > button {
+        transform: rotate(90deg);
+      }
+
+      .topic > section {
+        background-color: orange;
+        margin-top: 0;
+        max-height: 0;
+        padding: 0 0.5rem;
+        overflow-y: hidden;
+        transition-duration: 0.5s;
+        transition-property: margin-top, max-height, padding;
+      }
+
+      .topic.show > section {
+        margin-top: 1rem;
+        max-height: 100vh;
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+  </body>
+</html>
+
