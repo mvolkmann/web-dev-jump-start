@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <script>
-      function appendTopic(titleText, descriptionText) {
+      function getTopic(titleText, descriptionText) {
         const topic = document.createElement('div');
         topic.classList.add('topic');
 
@@ -29,7 +29,7 @@
         section.textContent = descriptionText;
         topic.append(section);
 
-        document.body.append(topic);
+        return topic;
       }
 
       function handleClick(event) {
@@ -45,7 +45,7 @@
         you can cause the changes in a property
         to take place over a period of time.
       `;
-      appendTopic('CSS Transitions', description);
+      document.body.append(getTopic('CSS Transitions', description));
 
       description = `
         CSS Flexible Box Layout is a module of CSS that defines a CSS box model
@@ -56,7 +56,7 @@
         overflowing the parent.  Both horizontal and vertical alignment of
         the children can be easily manipulated.
       `;
-      appendTopic('CSS Flexible Box Layout', description);
+      document.body.append(getTopic('CSS Flexible Box Layout', description));
     </script>
 
     <style>
